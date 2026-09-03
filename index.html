@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RELICARIO — Joyería con vida anterior</title>
+<meta name="description" content="RELICARIO — joyería de segunda vida seleccionada pieza a pieza. Próxima apertura del taller en Madrid." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<a class="skip-link" href="#coleccion" data-i18n="skip">Saltar a la colección</a>
+
+<!-- reusable engraving motifs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="m-ring" viewBox="0 0 100 120">
+      <ellipse cx="50" cy="72" rx="30" ry="30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <ellipse cx="50" cy="72" rx="23" ry="23" fill="none" stroke="currentColor" stroke-width="0.8"/>
+      <path d="M34 46 L50 20 L66 46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="50" cy="20" r="5.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M50 14.5 L50 25.5 M44.5 20 L55.5 20" stroke="currentColor" stroke-width="0.8"/>
+    </symbol>
+    <symbol id="m-signet" viewBox="0 0 100 120">
+      <ellipse cx="50" cy="78" rx="28" ry="28" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M27 58 Q50 30 73 58" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <ellipse cx="50" cy="44" rx="19" ry="13" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <ellipse cx="50" cy="44" rx="14" ry="9" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <path d="M43 44 h14 M50 39 v10" stroke="currentColor" stroke-width="0.9"/>
+    </symbol>
+    <symbol id="m-pendant" viewBox="0 0 100 120">
+      <path d="M18 20 Q50 40 82 20" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="50" cy="40" r="4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M34 54 Q34 48 50 48 Q66 48 66 54 L66 92 Q66 104 50 104 Q34 104 34 92 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M40 60 Q50 55 60 60 M40 92 Q50 97 60 92" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <text x="50" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="13" fill="currentColor" letter-spacing="1">A</text>
+    </symbol>
+    <symbol id="m-earrings" viewBox="0 0 100 120">
+      <path d="M32 26 q-9 22 0 40 q9 18 0 34" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M68 26 q9 22 0 40 q-9 18 0 34" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="32" cy="24" r="3.4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="68" cy="24" r="3.4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="32" cy="102" r="4.6" fill="currentColor" opacity="0.5"/>
+      <circle cx="68" cy="102" r="4.6" fill="currentColor" opacity="0.5"/>
+    </symbol>
+    <symbol id="m-earring-1" viewBox="0 0 100 120">
+      <circle cx="50" cy="30" r="4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M50 34 L50 58" stroke="currentColor" stroke-width="1"/>
+      <circle cx="50" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M50 70 m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <g stroke="currentColor" stroke-width="0.6" opacity="0.8">
+        <path d="M50 55 L50 49 M62 62 L67 59 M62 78 L67 81 M50 85 L50 91 M38 78 L33 81 M38 62 L33 59"/>
+      </g>
+    </symbol>
+    <symbol id="m-brooch" viewBox="0 0 100 120">
+      <ellipse cx="50" cy="60" rx="30" ry="36" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <ellipse cx="50" cy="60" rx="23" ry="29" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <path d="M44 52 q6 -10 12 0 q4 12 -6 22 q-10 -10 -6 -22" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M26 74 L74 84" stroke="currentColor" stroke-width="0.8"/>
+      <circle cx="26" cy="74" r="2.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="m-necklace" viewBox="0 0 100 120">
+      <path d="M14 20 Q50 96 86 20" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M20 20 Q50 84 80 20" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <circle cx="50" cy="78" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="50" cy="78" r="4" fill="currentColor" opacity="0.45"/>
+    </symbol>
+    <symbol id="m-bracelet" viewBox="0 0 100 120">
+      <ellipse cx="50" cy="60" rx="34" ry="24" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <ellipse cx="50" cy="60" rx="26" ry="17" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <path d="M30 46 h40 M28 60 h44 M30 74 h40" stroke="currentColor" stroke-width="0.55" opacity="0.7"/>
+      <rect x="43" y="34" width="14" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <p data-i18n="topbar">Joyería con vida anterior · Envíos a toda Europa · Recogida en Madrid</p>
+</div>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-lines" aria-hidden="true"></span>
+      <span data-i18n="menu">Menú</span>
+    </button>
+    <a class="wordmark" href="#top" aria-label="RELICARIO">RELICARIO</a>
+    <nav class="lang" aria-label="Idioma">
+      <button data-lang="es" class="is-active" lang="es">ES</button>
+      <span aria-hidden="true">·</span>
+      <button data-lang="en" lang="en">EN</button>
+      <span aria-hidden="true">·</span>
+      <button data-lang="zh" lang="zh">中</button>
+    </nav>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Principal" hidden>
+    <a href="#manifiesto" data-i18n="nav_manifesto">Manifiesto</a>
+    <a href="#coleccion" data-i18n="nav_collection">La selección</a>
+    <a href="#taller" data-i18n="nav_workshop">El taller</a>
+    <a href="#apertura" data-i18n="nav_opening">Apertura en Madrid</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="hero_eyebrow">Colección inaugural — 9 piezas</p>
+        <h1 id="hero-title" class="display-xl">
+          <span data-i18n="hero_l1">Cada joya tuvo</span>
+          <span data-i18n="hero_l2">una vida antes</span>
+          <span data-i18n="hero_l3">que la tuya.</span>
+        </h1>
+        <p class="hero-lead" data-i18n="hero_lead">Piezas de segunda mano seleccionadas de una en una: firmadas, grabadas, con el desgaste justo. Cuando eliges una, continúas su historia.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#coleccion" data-i18n="hero_cta1">Ver la selección</a>
+          <a class="btn btn-ghost" href="#apertura" data-i18n="hero_cta2">Avísame de la apertura</a>
+        </div>
+      </div>
+      <figure class="hero-cartouche" aria-hidden="true">
+        <svg viewBox="0 0 260 340" class="cartouche" role="presentation">
+          <path class="cartouche-frame" d="M130 14
+            C176 14 210 30 210 30 C206 60 224 74 240 88 C224 104 214 140 214 170
+            C214 200 224 236 240 252 C224 266 206 280 210 310 C210 310 176 326 130 326
+            C84 326 50 310 50 310 C54 280 36 266 20 252 C36 236 46 200 46 170
+            C46 140 36 104 20 88 C36 74 54 60 50 30 C50 30 84 14 130 14 Z" />
+          <path class="cartouche-inner" d="M130 34 C168 34 196 48 196 48 C193 72 207 84 220 96
+            C207 108 199 138 199 170 C199 202 207 232 220 244 C207 256 193 268 196 292
+            C196 292 168 306 130 306 C92 306 64 292 64 292 C67 268 53 256 40 244
+            C53 232 61 202 61 170 C61 138 53 108 40 96 C53 84 67 72 64 48 C64 48 92 34 130 34 Z" />
+          <text x="130" y="150" text-anchor="middle" class="cartouche-word-a">de</text>
+          <text x="130" y="205" text-anchor="middle" class="cartouche-word-b">segunda</text>
+          <text x="130" y="238" text-anchor="middle" class="cartouche-word-c">vida</text>
+        </svg>
+      </figure>
+    </div>
+    <a href="#manifiesto" class="scroll-cue" aria-label="Bajar">
+      <span data-i18n="scroll">Sigue</span>
+      <svg viewBox="0 0 16 24" width="14" height="20" aria-hidden="true"><path d="M8 1 V21 M2 15 L8 22 L14 15" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+    </a>
+  </section>
+
+  <section class="manifesto" id="manifiesto" aria-labelledby="manifiesto-title">
+    <div class="wrap manifesto-grid">
+      <p class="stamp" aria-hidden="true">
+        <span>RELICARIO</span>
+        <span>MADRID</span>
+        <span>· sel. ·</span>
+      </p>
+      <div class="manifesto-body">
+        <h2 id="manifiesto-title" class="label" data-i18n="manifesto_kicker">Manifiesto</h2>
+        <p class="manifesto-lead"><span class="dropcap" data-i18n="manifesto_dropcap">N</span><span data-i18n="manifesto_lead">o fabricamos nada. Buscamos joyas que ya existían —en cajas de reloj, en herencias, en mercados— y nos quedamos solo con las que tienen carácter: un sello gastado, una inscripción, un cierre de otra época.</span></p>
+        <p data-i18n="manifesto_p2">Cada pieza llega con su ficha: de dónde viene, de qué década es y qué le hemos hecho para devolverla a la vida. Nada se pule hasta borrar su historia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="coleccion" aria-labelledby="coleccion-title">
+    <div class="wrap">
+      <div class="collection-head">
+        <h2 id="coleccion-title" class="display-l" data-i18n="collection_title">La selección</h2>
+        <p class="collection-meta"><span data-i18n="collection_count">9 piezas</span> · <span data-i18n="collection_note">se renueva cada semana</span></p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar por tipo">
+        <button class="chip is-active" data-filter="all" data-i18n="filter_all">Todo</button>
+        <button class="chip" data-filter="anillos" data-i18n="filter_rings">Anillos</button>
+        <button class="chip" data-filter="pendientes" data-i18n="filter_earrings">Pendientes</button>
+        <button class="chip" data-filter="colgantes" data-i18n="filter_pendants">Colgantes</button>
+        <button class="chip" data-filter="broches" data-i18n="filter_brooches">Broches</button>
+        <button class="chip" data-filter="pulseras" data-i18n="filter_bracelets">Pulseras</button>
+      </div>
+
+      <ul class="grid" id="grid">
+        <li class="card" data-category="anillos">
+          <figure class="card-media"><svg class="motif"><use href="#m-signet"/></svg></figure>
+          <p class="lot">Lote 001</p>
+          <h3 class="card-name" data-i18n="p1_name">Anillo sello «Bonita»</h3>
+          <p class="prov" data-i18n="p1_prov">España, años 40 · grabado a mano</p>
+          <p class="price">€79</p>
+        </li>
+        <li class="card" data-category="colgantes">
+          <figure class="card-media"><svg class="motif"><use href="#m-pendant"/></svg></figure>
+          <p class="lot">Lote 002</p>
+          <h3 class="card-name" data-i18n="p2_name">Colgante cartucho «Amore»</h3>
+          <p class="prov" data-i18n="p2_prov">Italia, años 50 · oro laminado</p>
+          <p class="price"><span data-i18n="from">desde</span> €110</p>
+        </li>
+        <li class="card" data-category="anillos">
+          <figure class="card-media"><svg class="motif"><use href="#m-ring"/></svg></figure>
+          <p class="lot">Lote 003</p>
+          <h3 class="card-name" data-i18n="p3_name">Anillo firma «Amore»</h3>
+          <p class="prov" data-i18n="p3_prov">Francia, años 60 · sello ovalado</p>
+          <p class="price">€95</p>
+        </li>
+        <li class="card" data-category="pendientes">
+          <figure class="card-media"><svg class="motif"><use href="#m-earrings"/></svg></figure>
+          <p class="lot">Lote 004</p>
+          <h3 class="card-name" data-i18n="p4_name">Pendientes «Eira»</h3>
+          <p class="prov" data-i18n="p4_prov">España, años 70 · gancho largo</p>
+          <p class="price">€99</p>
+        </li>
+        <li class="card" data-category="pendientes">
+          <figure class="card-media"><svg class="motif"><use href="#m-earring-1"/></svg></figure>
+          <p class="lot">Lote 005</p>
+          <h3 class="card-name" data-i18n="p5_name">Pendiente individual «Dafne»</h3>
+          <p class="prov" data-i18n="p5_prov">c. 1930 · diamante talla antigua</p>
+          <p class="price">€290</p>
+        </li>
+        <li class="card" data-category="pendientes">
+          <figure class="card-media"><svg class="motif"><use href="#m-earrings"/></svg></figure>
+          <p class="lot">Lote 006</p>
+          <h3 class="card-name" data-i18n="p6_name">Pendientes «Estrat»</h3>
+          <p class="prov" data-i18n="p6_prov">Taller de Barcelona · plata oxidada</p>
+          <p class="price">€135</p>
+        </li>
+        <li class="card" data-category="broches">
+          <figure class="card-media"><svg class="motif"><use href="#m-brooch"/></svg></figure>
+          <p class="lot">Lote 007</p>
+          <h3 class="card-name" data-i18n="p7_name">Broche camafeo</h3>
+          <p class="prov" data-i18n="p7_prov">Alemania, s. XIX · concha tallada</p>
+          <p class="price">€120</p>
+        </li>
+        <li class="card" data-category="colgantes">
+          <figure class="card-media"><svg class="motif"><use href="#m-necklace"/></svg></figure>
+          <p class="lot">Lote 008</p>
+          <h3 class="card-name" data-i18n="p8_name">Gargantilla de perla barroca</h3>
+          <p class="prov" data-i18n="p8_prov">Años 50 · perla de río</p>
+          <p class="price">€140</p>
+        </li>
+        <li class="card" data-category="pulseras">
+          <figure class="card-media"><svg class="motif"><use href="#m-bracelet"/></svg></figure>
+          <p class="lot">Lote 009</p>
+          <h3 class="card-name" data-i18n="p9_name">Pulsera esclava grabada</h3>
+          <p class="prov" data-i18n="p9_prov">España, años 40 · cierre de lengüeta</p>
+          <p class="price">€85</p>
+        </li>
+      </ul>
+      <p class="grid-empty" hidden data-i18n="empty">No hay piezas de este tipo por ahora.</p>
+    </div>
+  </section>
+
+  <section class="workshop" id="taller" aria-labelledby="taller-title">
+    <div class="wrap workshop-grid">
+      <div class="workshop-copy">
+        <h2 id="taller-title" class="label" data-i18n="workshop_kicker">El taller</h2>
+        <p class="display-l" data-i18n="workshop_headline">Restauramos sin borrar.</p>
+        <p data-i18n="workshop_p1">Trabajamos con un taller de Madrid especializado en joyería antigua: baño de oro donde hace falta, cierres nuevos, perlas reensartadas. El desgaste que cuenta algo se queda.</p>
+        <p data-i18n="workshop_p2">Si buscas una pieza concreta —un sello con iniciales, un luto, un anillo de pedida de época— podemos rastrearla por ti.</p>
+        <a class="btn btn-ghost" href="#apertura" data-i18n="workshop_cta">Escríbenos</a>
+      </div>
+      <figure class="workshop-media" aria-hidden="true">
+        <svg viewBox="0 0 200 260" class="motif-large" role="presentation">
+          <use href="#m-brooch" x="50" y="10" width="100" height="120"/>
+          <use href="#m-ring" x="20" y="120" width="80" height="96"/>
+          <use href="#m-earring-1" x="110" y="130" width="70" height="84"/>
+        </svg>
+        <figcaption class="frame-caption" data-i18n="workshop_caption">Selección de febrero · sin retocar</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="opening" id="apertura" aria-labelledby="apertura-title">
+    <div class="wrap opening-inner">
+      <p class="label" data-i18n="opening_kicker">Próximamente</p>
+      <h2 id="apertura-title" class="display-l" data-i18n="opening_headline">El taller abre en Madrid</h2>
+      <p class="opening-lead" data-i18n="opening_lead">Estamos montando una tienda-taller en un centro de diseño de Madrid. Dirección y fecha, muy pronto. Déjanos tu correo y serás de los primeros en entrar.</p>
+      <form class="signup" id="signup" novalidate>
+        <label class="visually-hidden" for="email" data-i18n="email_label">Correo electrónico</label>
+        <input type="email" id="email" name="email" required autocomplete="email"
+               placeholder="tu@correo.com" data-i18n-ph="email_ph" />
+        <button type="submit" class="btn btn-primary" data-i18n="signup_btn">Avísame</button>
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="opening-fineprint" data-i18n="opening_fine">Un solo correo cuando abramos. Sin newsletter, sin reenvíos.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <p class="wordmark">RELICARIO</p>
+      <p data-i18n="footer_tag">Joyería con vida anterior</p>
+    </div>
+    <nav class="footer-nav" aria-label="Pie">
+      <a href="#manifiesto" data-i18n="nav_manifesto">Manifiesto</a>
+      <a href="#coleccion" data-i18n="nav_collection">La selección</a>
+      <a href="#taller" data-i18n="nav_workshop">El taller</a>
+      <a href="#apertura" data-i18n="nav_opening">Apertura en Madrid</a>
+    </nav>
+    <div class="footer-meta">
+      <a href="https://instagram.com" rel="noopener">Instagram</a>
+      <nav class="lang lang-foot" aria-label="Idioma (pie)">
+        <button data-lang="es" class="is-active">ES</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="en">EN</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="zh">中</button>
+      </nav>
+      <p class="copyright">© <span id="year">2026</span> RELICARIO</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

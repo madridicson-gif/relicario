@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Ctext y=%2714%27 font-size=%2714%27%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E">
+<title>RELICARIO</title>
+<meta name="description" content="RELICARIO — joyería de segunda vida seleccionada pieza a pieza. Próxima apertura del taller en Madrid." />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  color-scheme: light;
+  --bone:    #EDE7DA;
+  --vitrine: #F7F3EA;
+  --ink:     #211D18;
+  --pewter:  #6E6A62;
+  --brass:   #9A7B4F;
+  --brass-2: #C4A878;
+  --oxblood: #5B2A2A;
+  --line:    rgba(154, 123, 79, .34);
+  --line-soft: rgba(33, 29, 24, .12);
+  --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 40px;
+  --s5: 64px; --s6: 96px; --s7: 140px;
+  --measure: 60ch;
+  --pad-x: clamp(20px, 5vw, 64px);
+  --section-y: clamp(64px, 12vh, 140px);
+  --maxw: 1220px;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-util: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bone); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.7;
+  font-optical-sizing: auto; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+.wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x); }
+p { margin: 0 0 1em; }
+a { color: inherit; }
+img, svg { max-width: 100%; }
+.display-xl { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.7rem, 8vw, 5.4rem); line-height: 1.02; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.display-l { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 4.4vw, 3rem); line-height: 1.08; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+.display-xl span, .hero-cartouche text, .wordmark { text-shadow: 0 1px 0 rgba(255, 253, 247, .55); }
+.label { font-family: var(--font-util); font-weight: 600; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--brass); margin: 0 0 var(--s3); }
+.eyebrow { font-family: var(--font-util); font-weight: 500; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--pewter); margin: 0 0 var(--s3); }
+.visually-hidden, .skip-link:not(:focus) { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 200; background: var(--ink); color: var(--bone); padding: 10px 16px; font-family: var(--font-util); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; }
+:where(a, button, input):focus-visible { outline: 2px solid var(--oxblood); outline-offset: 3px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-util); font-weight: 500; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; padding: 15px 26px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease); }
+.btn-primary { background: var(--oxblood); border-color: var(--oxblood); color: var(--vitrine); }
+.btn-primary:hover { background: #451f1f; border-color: #451f1f; }
+.btn-ghost:hover { background: var(--ink); color: var(--bone); }
+.topbar { background: var(--ink); color: var(--brass-2); text-align: center; }
+.topbar p { margin: 0; padding: 9px 16px; font-family: var(--font-util); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; }
+.site-header { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--bone) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.header-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s2); padding-block: 16px; }
+.wordmark { font-family: var(--font-display); font-weight: 500; font-size: 1.4rem; letter-spacing: .32em; text-indent: .32em; text-decoration: none; text-align: center; white-space: nowrap; }
+.menu-btn { justify-self: start; display: inline-flex; align-items: center; gap: 10px; background: none; border: 0; padding: 6px 0; cursor: pointer; font-family: var(--font-util); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+.menu-lines { width: 22px; height: 9px; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
+.lang { justify-self: end; display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-util); font-size: .72rem; letter-spacing: .12em; color: var(--pewter); }
+.lang button { background: none; border: 0; padding: 4px 2px; font: inherit; letter-spacing: inherit; color: var(--pewter); cursor: pointer; }
+.lang button.is-active { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.site-nav { border-top: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; gap: clamp(var(--s3), 5vw, var(--s5)); padding: 18px var(--pad-x); font-family: var(--font-util); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+.site-nav[hidden] { display: none; }
+.site-nav a { text-decoration: none; padding: 4px 0; }
+.site-nav a:hover { color: var(--brass); }
+.hero { padding-block: clamp(48px, 9vh, 110px) clamp(40px, 7vh, 80px); position: relative; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(var(--s4), 6vw, var(--s7)); align-items: center; }
+.hero-copy { max-width: 34rem; }
+.display-xl span { display: block; }
+.hero-lead { font-size: 1.16rem; color: #37322b; margin: var(--s4) 0 var(--s4); max-width: 40ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.hero-cartouche { margin: 0; display: flex; justify-content: center; }
+.cartouche { width: min(300px, 72vw); height: auto; color: var(--brass); }
+.cartouche-frame, .cartouche-inner { fill: none; stroke: currentColor; }
+.cartouche-frame { stroke-width: 1.4; }
+.cartouche-inner { stroke-width: .7; opacity: .8; }
+.cartouche text { fill: var(--ink); font-family: var(--font-display); }
+.cartouche-word-a { font-size: 20px; font-style: italic; fill: var(--pewter); }
+.cartouche-word-b { font-size: 34px; letter-spacing: .01em; }
+.cartouche-word-c { font-size: 34px; letter-spacing: .18em; }
+@media (prefers-reduced-motion: no-preference) {
+  .cartouche-frame, .cartouche-inner { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: engrave 2.4s var(--ease) .2s forwards; }
+  .cartouche-inner { animation-delay: .5s; animation-duration: 2.6s; }
+  .cartouche text { opacity: 0; animation: rise .8s var(--ease) 1.5s forwards; }
+  .cartouche-word-c { animation-delay: 1.75s; }
+  .hero-copy > * { opacity: 0; transform: translateY(14px); animation: rise .7s var(--ease) forwards; }
+  .hero-copy > :nth-child(1) { animation-delay: .05s; }
+  .hero-copy > :nth-child(2) { animation-delay: .15s; }
+  .hero-copy > :nth-child(3) { animation-delay: .3s; }
+  .hero-copy > :nth-child(4) { animation-delay: .42s; }
+}
+@keyframes engrave { to { stroke-dashoffset: 0; } }
+@keyframes rise { to { opacity: 1; transform: none; } }
+.scroll-cue { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--s5); margin-left: var(--pad-x); font-family: var(--font-util); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--pewter); text-decoration: none; }
+.manifesto { padding-block: var(--section-y); border-top: 1px solid var(--line); }
+.manifesto-grid { display: grid; grid-template-columns: auto 1fr; gap: clamp(var(--s4), 7vw, var(--s6)); align-items: start; }
+.stamp { display: grid; place-items: center; gap: 2px; width: 116px; height: 116px; border: 1.5px solid var(--line); border-radius: 50%; transform: rotate(-8deg); color: var(--brass); font-family: var(--font-util); font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; text-align: center; margin: 0; }
+.manifesto-body { max-width: var(--measure); }
+.manifesto-lead { font-size: 1.32rem; line-height: 1.55; }
+.manifesto-body p:last-child { color: #453f37; margin-bottom: 0; }
+.dropcap { float: left; font-family: var(--font-display); font-size: 3.4em; line-height: .82; padding: 6px 10px 0 0; color: var(--oxblood); }
+.collection { padding-block: var(--section-y); border-top: 1px solid var(--line); }
+.collection-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s2); }
+.collection-meta { font-family: var(--font-util); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pewter); margin: 0; }
+.filters { display: flex; flex-wrap: wrap; gap: var(--s1); margin: var(--s4) 0 var(--s5); padding-bottom: var(--s3); border-bottom: 1px solid var(--line-soft); }
+.chip { background: none; border: 1px solid var(--line); color: var(--pewter); padding: 8px 16px; font-family: var(--font-util); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; transition: color .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease); }
+.chip:hover { color: var(--ink); border-color: var(--brass); }
+.chip.is-active { background: var(--ink); border-color: var(--ink); color: var(--bone); }
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s5) var(--s3); }
+.card { position: relative; }
+.card[hidden] { display: none; }
+.card-media { margin: 0 0 var(--s3); aspect-ratio: 4 / 5; background: var(--vitrine); border: 1px solid var(--line-soft); display: grid; place-items: center; position: relative; overflow: hidden; }
+.card-media::after { content: ""; position: absolute; inset: 10px; border: 1px solid var(--line); pointer-events: none; }
+.motif { width: 46%; height: 60%; color: var(--brass); transition: transform .5s var(--ease), color .3s var(--ease); }
+.card:hover .motif { transform: translateY(-4px) scale(1.03); color: var(--oxblood); }
+.lot { font-family: var(--font-util); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--brass); margin: 0 0 6px; }
+.card-name { font-family: var(--font-display); font-weight: 400; font-size: 1.16rem; line-height: 1.25; margin: 0 0 4px; }
+.prov { font-style: italic; font-size: .98rem; color: var(--pewter); margin: 0 0 8px; max-width: 26ch; }
+.price { font-family: var(--font-util); font-size: .82rem; letter-spacing: .08em; margin: 0; }
+.price [data-i18n] { color: var(--pewter); text-transform: lowercase; }
+.card::after { content: ""; display: block; height: 1px; width: 0; background: var(--brass); margin-top: var(--s3); transition: width .45s var(--ease); }
+.card:hover::after { width: 44px; }
+.grid-empty { font-style: italic; color: var(--pewter); padding: var(--s4) 0; }
+.workshop { padding-block: var(--section-y); border-top: 1px solid var(--line); background: var(--vitrine); }
+.workshop-grid { display: grid; grid-template-columns: 1fr .8fr; gap: clamp(var(--s4), 7vw, var(--s6)); align-items: center; }
+.workshop-copy { max-width: 42ch; }
+.workshop-copy .display-l { margin-bottom: var(--s3); }
+.workshop-copy p { color: #453f37; }
+.workshop-copy .btn { margin-top: var(--s2); }
+.workshop-media { margin: 0; border: 1px solid var(--line); padding: var(--s4); background: var(--bone); }
+.motif-large { width: 100%; height: auto; color: var(--brass); display: block; }
+.frame-caption { margin-top: var(--s3); font-family: var(--font-util); font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pewter); text-align: center; }
+.opening { padding-block: var(--section-y); border-top: 1px solid var(--line); background: var(--ink); color: var(--bone); text-align: center; }
+.opening .label { color: var(--brass-2); }
+.opening .display-l { color: var(--bone); }
+.opening-lead { max-width: 48ch; margin: var(--s3) auto var(--s5); color: #cfc7b7; }
+.signup { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: center; max-width: 520px; margin: 0 auto var(--s3); }
+.signup input { flex: 1 1 240px; background: transparent; border: 1px solid rgba(196, 168, 120, .5); color: var(--bone); padding: 15px 16px; font-family: var(--font-util); font-size: .9rem; }
+.signup input::placeholder { color: #8f887a; }
+.signup input:focus-visible { outline-color: var(--brass-2); border-color: var(--brass-2); }
+.signup .btn-primary { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+.signup .btn-primary:hover { background: var(--brass-2); border-color: var(--brass-2); }
+.form-msg { flex-basis: 100%; margin: 6px 0 0; min-height: 1.2em; font-style: italic; color: var(--brass-2); }
+.form-msg.is-error { color: #e0a3a3; }
+.opening-fineprint { font-family: var(--font-util); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: #8f887a; margin: 0; }
+.site-footer { background: var(--bone); border-top: 1px solid var(--line); padding-block: var(--s6) var(--s4); }
+.footer-grid { display: grid; grid-template-columns: 1fr auto auto; gap: clamp(var(--s4), 6vw, var(--s6)); align-items: start; }
+.footer-brand .wordmark { display: block; text-align: left; text-indent: 0; margin-bottom: 8px; }
+.footer-brand p:last-child { font-style: italic; color: var(--pewter); margin: 0; }
+.footer-nav { display: grid; gap: 10px; font-family: var(--font-util); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; }
+.footer-nav a { text-decoration: none; }
+.footer-nav a:hover { color: var(--brass); }
+.footer-meta { display: grid; gap: 12px; font-family: var(--font-util); font-size: .74rem; letter-spacing: .1em; }
+.footer-meta a { text-decoration: none; text-transform: uppercase; }
+.lang-foot { justify-self: start; }
+.copyright { color: var(--pewter); margin: 0; letter-spacing: .12em; }
+@media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: var(--s5); }
+  .hero-cartouche { order: -1; }
+  .cartouche { width: min(240px, 60vw); }
+  .workshop-grid { grid-template-columns: 1fr; gap: var(--s5); }
+  .workshop-media { order: -1; }
+  .manifesto-grid { grid-template-columns: 1fr; gap: var(--s4); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .header-inner { grid-template-columns: auto 1fr auto; }
+  .menu-btn span:not(.menu-lines) { display: none; }
+  .wordmark { font-size: 1.15rem; letter-spacing: .24em; text-indent: .24em; }
+  .grid { gap: var(--s4) var(--s2); }
+  .footer-grid { grid-template-columns: 1fr; gap: var(--s4); }
+  .btn { width: 100%; }
+  .hero-actions { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#coleccion" data-i18n="skip">Saltar a la colección</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="m-ring" viewBox="0 0 100 120">
+    <ellipse cx="50" cy="72" rx="30" ry="30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <ellipse cx="50" cy="72" rx="23" ry="23" fill="none" stroke="currentColor" stroke-width="0.8"/>
+    <path d="M34 46 L50 20 L66 46" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="50" cy="20" r="5.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M50 14.5 L50 25.5 M44.5 20 L55.5 20" stroke="currentColor" stroke-width="0.8"/>
+  </symbol>
+  <symbol id="m-signet" viewBox="0 0 100 120">
+    <ellipse cx="50" cy="78" rx="28" ry="28" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M27 58 Q50 30 73 58" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <ellipse cx="50" cy="44" rx="19" ry="13" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <ellipse cx="50" cy="44" rx="14" ry="9" fill="none" stroke="currentColor" stroke-width="0.7"/>
+    <path d="M43 44 h14 M50 39 v10" stroke="currentColor" stroke-width="0.9"/>
+  </symbol>
+  <symbol id="m-pendant" viewBox="0 0 100 120">
+    <path d="M18 20 Q50 40 82 20" fill="none" stroke="currentColor" stroke-width="1"/>
+    <circle cx="50" cy="40" r="4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <path d="M34 54 Q34 48 50 48 Q66 48 66 54 L66 92 Q66 104 50 104 Q34 104 34 92 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M40 60 Q50 55 60 60 M40 92 Q50 97 60 92" fill="none" stroke="currentColor" stroke-width="0.7"/>
+    <text x="50" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="13" fill="currentColor" letter-spacing="1">A</text>
+  </symbol>
+  <symbol id="m-earrings" viewBox="0 0 100 120">
+    <path d="M32 26 q-9 22 0 40 q9 18 0 34" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M68 26 q9 22 0 40 q-9 18 0 34" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="32" cy="24" r="3.4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <circle cx="68" cy="24" r="3.4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <circle cx="32" cy="102" r="4.6" fill="currentColor" opacity="0.5"/>
+    <circle cx="68" cy="102" r="4.6" fill="currentColor" opacity="0.5"/>
+  </symbol>
+  <symbol id="m-earring-1" viewBox="0 0 100 120">
+    <circle cx="50" cy="30" r="4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <path d="M50 34 L50 58" stroke="currentColor" stroke-width="1"/>
+    <circle cx="50" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M50 70 m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0" fill="none" stroke="currentColor" stroke-width="0.7"/>
+    <g stroke="currentColor" stroke-width="0.6" opacity="0.8"><path d="M50 55 L50 49 M62 62 L67 59 M62 78 L67 81 M50 85 L50 91 M38 78 L33 81 M38 62 L33 59"/></g>
+  </symbol>
+  <symbol id="m-brooch" viewBox="0 0 100 120">
+    <ellipse cx="50" cy="60" rx="30" ry="36" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <ellipse cx="50" cy="60" rx="23" ry="29" fill="none" stroke="currentColor" stroke-width="0.7"/>
+    <path d="M44 52 q6 -10 12 0 q4 12 -6 22 q-10 -10 -6 -22" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M26 74 L74 84" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="26" cy="74" r="2.4" fill="currentColor"/>
+  </symbol>
+  <symbol id="m-necklace" viewBox="0 0 100 120">
+    <path d="M14 20 Q50 96 86 20" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <path d="M20 20 Q50 84 80 20" fill="none" stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="50" cy="78" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="50" cy="78" r="4" fill="currentColor" opacity="0.45"/>
+  </symbol>
+  <symbol id="m-bracelet" viewBox="0 0 100 120">
+    <ellipse cx="50" cy="60" rx="34" ry="24" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <ellipse cx="50" cy="60" rx="26" ry="17" fill="none" stroke="currentColor" stroke-width="0.7"/>
+    <path d="M30 46 h40 M28 60 h44 M30 74 h40" stroke="currentColor" stroke-width="0.55" opacity="0.7"/>
+    <rect x="43" y="34" width="14" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  </symbol>
+</defs></svg>
+
+<div class="topbar"><p data-i18n="topbar">Joyería con vida anterior · Envíos a toda Europa · Recogida en Madrid</p></div>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-lines" aria-hidden="true"></span>
+      <span data-i18n="menu">Menú</span>
+    </button>
+    <a class="wordmark" href="#top" aria-label="RELICARIO">RELICARIO</a>
+    <nav class="lang" aria-label="Idioma">
+      <button data-lang="es" class="is-active" lang="es">ES</button>
+      <span aria-hidden="true">·</span>
+      <button data-lang="en" lang="en">EN</button>
+      <span aria-hidden="true">·</span>
+      <button data-lang="zh" lang="zh">中</button>
+    </nav>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Principal" hidden>
+    <a href="#manifiesto" data-i18n="nav_manifesto">Manifiesto</a>
+    <a href="#coleccion" data-i18n="nav_collection">La selección</a>
+    <a href="#taller" data-i18n="nav_workshop">El taller</a>
+    <a href="#apertura" data-i18n="nav_opening">Apertura en Madrid</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="hero_eyebrow">Colección inaugural — 9 piezas</p>
+        <h1 id="hero-title" class="display-xl">
+          <span data-i18n="hero_l1">Cada joya tuvo</span>
+          <span data-i18n="hero_l2">una vida antes</span>
+          <span data-i18n="hero_l3">que la tuya.</span>
+        </h1>
+        <p class="hero-lead" data-i18n="hero_lead">Piezas de segunda mano seleccionadas de una en una: firmadas, grabadas, con el desgaste justo. Cuando eliges una, continúas su historia.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#coleccion" data-i18n="hero_cta1">Ver la selección</a>
+          <a class="btn btn-ghost" href="#apertura" data-i18n="hero_cta2">Avísame de la apertura</a>
+        </div>
+      </div>
+      <figure class="hero-cartouche" aria-hidden="true">
+        <svg viewBox="0 0 260 340" class="cartouche" role="presentation">
+          <path class="cartouche-frame" d="M130 14 C176 14 210 30 210 30 C206 60 224 74 240 88 C224 104 214 140 214 170 C214 200 224 236 240 252 C224 266 206 280 210 310 C210 310 176 326 130 326 C84 326 50 310 50 310 C54 280 36 266 20 252 C36 236 46 200 46 170 C46 140 36 104 20 88 C36 74 54 60 50 30 C50 30 84 14 130 14 Z" />
+          <path class="cartouche-inner" d="M130 34 C168 34 196 48 196 48 C193 72 207 84 220 96 C207 108 199 138 199 170 C199 202 207 232 220 244 C207 256 193 268 196 292 C196 292 168 306 130 306 C92 306 64 292 64 292 C67 268 53 256 40 244 C53 232 61 202 61 170 C61 138 53 108 40 96 C53 84 67 72 64 48 C64 48 92 34 130 34 Z" />
+          <text x="130" y="150" text-anchor="middle" class="cartouche-word-a">de</text>
+          <text x="130" y="205" text-anchor="middle" class="cartouche-word-b">segunda</text>
+          <text x="130" y="238" text-anchor="middle" class="cartouche-word-c">vida</text>
+        </svg>
+      </figure>
+    </div>
+    <a href="#manifiesto" class="scroll-cue" aria-label="Bajar">
+      <span data-i18n="scroll">Sigue</span>
+      <svg viewBox="0 0 16 24" width="14" height="20" aria-hidden="true"><path d="M8 1 V21 M2 15 L8 22 L14 15" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+    </a>
+  </section>
+
+  <section class="manifesto" id="manifiesto" aria-labelledby="manifiesto-title">
+    <div class="wrap manifesto-grid">
+      <p class="stamp" aria-hidden="true"><span>RELICARIO</span><span>MADRID</span><span>· sel. ·</span></p>
+      <div class="manifesto-body">
+        <h2 id="manifiesto-title" class="label" data-i18n="manifesto_kicker">Manifiesto</h2>
+        <p class="manifesto-lead"><span class="dropcap" data-i18n="manifesto_dropcap">N</span><span data-i18n="manifesto_lead">o fabricamos nada. Buscamos joyas que ya existían —en cajas de reloj, en herencias, en mercados— y nos quedamos solo con las que tienen carácter: un sello gastado, una inscripción, un cierre de otra época.</span></p>
+        <p data-i18n="manifesto_p2">Cada pieza llega con su ficha: de dónde viene, de qué década es y qué le hemos hecho para devolverla a la vida. Nada se pule hasta borrar su historia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="coleccion" aria-labelledby="coleccion-title">
+    <div class="wrap">
+      <div class="collection-head">
+        <h2 id="coleccion-title" class="display-l" data-i18n="collection_title">La selección</h2>
+        <p class="collection-meta"><span data-i18n="collection_count">9 piezas</span> · <span data-i18n="collection_note">se renueva cada semana</span></p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar por tipo">
+        <button class="chip is-active" data-filter="all" data-i18n="filter_all">Todo</button>
+        <button class="chip" data-filter="anillos" data-i18n="filter_rings">Anillos</button>
+        <button class="chip" data-filter="pendientes" data-i18n="filter_earrings">Pendientes</button>
+        <button class="chip" data-filter="colgantes" data-i18n="filter_pendants">Colgantes</button>
+        <button class="chip" data-filter="broches" data-i18n="filter_brooches">Broches</button>
+        <button class="chip" data-filter="pulseras" data-i18n="filter_bracelets">Pulseras</button>
+      </div>
+      <ul class="grid" id="grid">
+        <li class="card" data-category="anillos">
+          <figure class="card-media"><svg class="motif"><use href="#m-signet"/></svg></figure>
+          <p class="lot">Lote 001</p><h3 class="card-name" data-i18n="p1_name">Anillo sello «Bonita»</h3>
+          <p class="prov" data-i18n="p1_prov">España, años 40 · grabado a mano</p><p class="price">€79</p>
+        </li>
+        <li class="card" data-category="colgantes">
+          <figure class="card-media"><svg class="motif"><use href="#m-pendant"/></svg></figure>
+          <p class="lot">Lote 002</p><h3 class="card-name" data-i18n="p2_name">Colgante cartucho «Amore»</h3>
+          <p class="prov" data-i18n="p2_prov">Italia, años 50 · oro laminado</p><p class="price"><span data-i18n="from">desde</span> €110</p>
+        </li>
+        <li class="card" data-category="anillos">
+          <figure class="card-media"><svg class="motif"><use href="#m-ring"/></svg></figure>
+          <p class="lot">Lote 003</p><h3 class="card-name" data-i18n="p3_name">Anillo firma «Amore»</h3>
+          <p class="prov" data-i18n="p3_prov">Francia, años 60 · sello ovalado</p><p class="price">€95</p>
+        </li>
+        <li class="card" data-category="pendientes">
+          <figure class="card-media"><svg class="motif"><use href="#m-earrings"/></svg></figure>
+          <p class="lot">Lote 004</p><h3 class="card-name" data-i18n="p4_name">Pendientes «Eira»</h3>
+          <p class="prov" data-i18n="p4_prov">España, años 70 · gancho largo</p><p class="price">€99</p>
+        </li>
+        <li class="card" data-category="pendientes">
+          <figure class="card-media"><svg class="motif"><use href="#m-earring-1"/></svg></figure>
+          <p class="lot">Lote 005</p><h3 class="card-name" data-i18n="p5_name">Pendiente individual «Dafne»</h3>
+          <p class="prov" data-i18n="p5_prov">c. 1930 · diamante talla antigua</p><p class="price">€290</p>
+        </li>
+        <li class="card" data-category="pendientes">
+          <figure class="card-media"><svg class="motif"><use href="#m-earrings"/></svg></figure>
+          <p class="lot">Lote 006</p><h3 class="card-name" data-i18n="p6_name">Pendientes «Estrat»</h3>
+          <p class="prov" data-i18n="p6_prov">Taller de Barcelona · plata oxidada</p><p class="price">€135</p>
+        </li>
+        <li class="card" data-category="broches">
+          <figure class="card-media"><svg class="motif"><use href="#m-brooch"/></svg></figure>
+          <p class="lot">Lote 007</p><h3 class="card-name" data-i18n="p7_name">Broche camafeo</h3>
+          <p class="prov" data-i18n="p7_prov">Alemania, s. XIX · concha tallada</p><p class="price">€120</p>
+        </li>
+        <li class="card" data-category="colgantes">
+          <figure class="card-media"><svg class="motif"><use href="#m-necklace"/></svg></figure>
+          <p class="lot">Lote 008</p><h3 class="card-name" data-i18n="p8_name">Gargantilla de perla barroca</h3>
+          <p class="prov" data-i18n="p8_prov">Años 50 · perla de río</p><p class="price">€140</p>
+        </li>
+        <li class="card" data-category="pulseras">
+          <figure class="card-media"><svg class="motif"><use href="#m-bracelet"/></svg></figure>
+          <p class="lot">Lote 009</p><h3 class="card-name" data-i18n="p9_name">Pulsera esclava grabada</h3>
+          <p class="prov" data-i18n="p9_prov">España, años 40 · cierre de lengüeta</p><p class="price">€85</p>
+        </li>
+      </ul>
+      <p class="grid-empty" hidden data-i18n="empty">No hay piezas de este tipo por ahora.</p>
+    </div>
+  </section>
+
+  <section class="workshop" id="taller" aria-labelledby="taller-title">
+    <div class="wrap workshop-grid">
+      <div class="workshop-copy">
+        <h2 id="taller-title" class="label" data-i18n="workshop_kicker">El taller</h2>
+        <p class="display-l" data-i18n="workshop_headline">Restauramos sin borrar.</p>
+        <p data-i18n="workshop_p1">Trabajamos con un taller de Madrid especializado en joyería antigua: baño de oro donde hace falta, cierres nuevos, perlas reensartadas. El desgaste que cuenta algo se queda.</p>
+        <p data-i18n="workshop_p2">Si buscas una pieza concreta —un sello con iniciales, un luto, un anillo de pedida de época— podemos rastrearla por ti.</p>
+        <a class="btn btn-ghost" href="#apertura" data-i18n="workshop_cta">Escríbenos</a>
+      </div>
+      <figure class="workshop-media" aria-hidden="true">
+        <svg viewBox="0 0 200 260" class="motif-large" role="presentation">
+          <use href="#m-brooch" x="50" y="10" width="100" height="120"/>
+          <use href="#m-ring" x="20" y="120" width="80" height="96"/>
+          <use href="#m-earring-1" x="110" y="130" width="70" height="84"/>
+        </svg>
+        <figcaption class="frame-caption" data-i18n="workshop_caption">Selección de febrero · sin retocar</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="opening" id="apertura" aria-labelledby="apertura-title">
+    <div class="wrap opening-inner">
+      <p class="label" data-i18n="opening_kicker">Próximamente</p>
+      <h2 id="apertura-title" class="display-l" data-i18n="opening_headline">El taller abre en Madrid</h2>
+      <p class="opening-lead" data-i18n="opening_lead">Estamos montando una tienda-taller en un centro de diseño de Madrid. Dirección y fecha, muy pronto. Déjanos tu correo y serás de los primeros en entrar.</p>
+      <form class="signup" id="signup" novalidate>
+        <label class="visually-hidden" for="email" data-i18n="email_label">Correo electrónico</label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="tu@correo.com" data-i18n-ph="email_ph" />
+        <button type="submit" class="btn btn-primary" data-i18n="signup_btn">Avísame</button>
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="opening-fineprint" data-i18n="opening_fine">Un solo correo cuando abramos. Sin newsletter, sin reenvíos.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <p class="wordmark">RELICARIO</p>
+      <p data-i18n="footer_tag">Joyería con vida anterior</p>
+    </div>
+    <nav class="footer-nav" aria-label="Pie">
+      <a href="#manifiesto" data-i18n="nav_manifesto">Manifiesto</a>
+      <a href="#coleccion" data-i18n="nav_collection">La selección</a>
+      <a href="#taller" data-i18n="nav_workshop">El taller</a>
+      <a href="#apertura" data-i18n="nav_opening">Apertura en Madrid</a>
+    </nav>
+    <div class="footer-meta">
+      <a href="https://instagram.com" rel="noopener">Instagram</a>
+      <nav class="lang lang-foot" aria-label="Idioma (pie)">
+        <button data-lang="es" class="is-active">ES</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="en">EN</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="zh">中</button>
+      </nav>
+      <p class="copyright">© <span id="year">2026</span> RELICARIO</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var I18N = {
+    es: {
+      skip: 'Saltar a la colección',
+      topbar: 'Joyería con vida anterior · Envíos a toda Europa · Recogida en Madrid',
+      menu: 'Menú', nav_manifesto: 'Manifiesto', nav_collection: 'La selección', nav_workshop: 'El taller', nav_opening: 'Apertura en Madrid',
+      hero_eyebrow: 'Colección inaugural — 9 piezas', hero_l1: 'Cada joya tuvo', hero_l2: 'una vida antes', hero_l3: 'que la tuya.',
+      hero_lead: 'Piezas de segunda mano seleccionadas de una en una: firmadas, grabadas, con el desgaste justo. Cuando eliges una, continúas su historia.',
+      hero_cta1: 'Ver la selección', hero_cta2: 'Avísame de la apertura', scroll: 'Sigue',
+      manifesto_kicker: 'Manifiesto', manifesto_dropcap: 'N',
+      manifesto_lead: 'o fabricamos nada. Buscamos joyas que ya existían —en cajas de reloj, en herencias, en mercados— y nos quedamos solo con las que tienen carácter: un sello gastado, una inscripción, un cierre de otra época.',
+      manifesto_p2: 'Cada pieza llega con su ficha: de dónde viene, de qué década es y qué le hemos hecho para devolverla a la vida. Nada se pule hasta borrar su historia.',
+      collection_title: 'La selección', collection_count: '9 piezas', collection_note: 'se renueva cada semana',
+      filter_all: 'Todo', filter_rings: 'Anillos', filter_earrings: 'Pendientes', filter_pendants: 'Colgantes', filter_brooches: 'Broches', filter_bracelets: 'Pulseras',
+      from: 'desde', empty: 'No hay piezas de este tipo por ahora.',
+      p1_name: 'Anillo sello «Bonita»', p1_prov: 'España, años 40 · grabado a mano',
+      p2_name: 'Colgante cartucho «Amore»', p2_prov: 'Italia, años 50 · oro laminado',
+      p3_name: 'Anillo firma «Amore»', p3_prov: 'Francia, años 60 · sello ovalado',
+      p4_name: 'Pendientes «Eira»', p4_prov: 'España, años 70 · gancho largo',
+      p5_name: 'Pendiente individual «Dafne»', p5_prov: 'c. 1930 · diamante talla antigua',
+      p6_name: 'Pendientes «Estrat»', p6_prov: 'Taller de Barcelona · plata oxidada',
+      p7_name: 'Broche camafeo', p7_prov: 'Alemania, s. XIX · concha tallada',
+      p8_name: 'Gargantilla de perla barroca', p8_prov: 'Años 50 · perla de río',
+      p9_name: 'Pulsera esclava grabada', p9_prov: 'España, años 40 · cierre de lengüeta',
+      workshop_kicker: 'El taller', workshop_headline: 'Restauramos sin borrar.',
+      workshop_p1: 'Trabajamos con un taller de Madrid especializado en joyería antigua: baño de oro donde hace falta, cierres nuevos, perlas reensartadas. El desgaste que cuenta algo se queda.',
+      workshop_p2: 'Si buscas una pieza concreta —un sello con iniciales, un luto, un anillo de pedida de época— podemos rastrearla por ti.',
+      workshop_cta: 'Escríbenos', workshop_caption: 'Selección de febrero · sin retocar',
+      opening_kicker: 'Próximamente', opening_headline: 'El taller abre en Madrid',
+      opening_lead: 'Estamos montando una tienda-taller en un centro de diseño de Madrid. Dirección y fecha, muy pronto. Déjanos tu correo y serás de los primeros en entrar.',
+      email_label: 'Correo electrónico', email_ph: 'tu@correo.com', signup_btn: 'Avísame',
+      opening_fine: 'Un solo correo cuando abramos. Sin newsletter, sin reenvíos.',
+      msg_ok: 'Gracias. Te escribimos cuando abramos.', msg_err: 'Escribe un correo válido, por favor.',
+      footer_tag: 'Joyería con vida anterior'
+    },
+    en: {
+      skip: 'Skip to the collection',
+      topbar: 'Jewellery with a past life · Shipping across Europe · Pickup in Madrid',
+      menu: 'Menu', nav_manifesto: 'Manifesto', nav_collection: 'The selection', nav_workshop: 'The workshop', nav_opening: 'Opening in Madrid',
+      hero_eyebrow: 'Opening collection — 9 pieces', hero_l1: 'Every piece had', hero_l2: 'a life before', hero_l3: 'it met you.',
+      hero_lead: 'Second-hand jewellery chosen one piece at a time: signed, engraved, worn just enough. Choose one and you carry its story forward.',
+      hero_cta1: 'See the selection', hero_cta2: 'Tell me when it opens', scroll: 'More',
+      manifesto_kicker: 'Manifesto', manifesto_dropcap: 'W',
+      manifesto_lead: 'e make nothing. We look for jewellery that already existed — in watch boxes, in inheritances, in flea markets — and keep only the pieces with character: a worn signet, an inscription, a clasp from another era.',
+      manifesto_p2: 'Each piece arrives with its record: where it came from, which decade it is, and what we did to bring it back. Nothing is polished until its history disappears.',
+      collection_title: 'The selection', collection_count: '9 pieces', collection_note: 'refreshed weekly',
+      filter_all: 'All', filter_rings: 'Rings', filter_earrings: 'Earrings', filter_pendants: 'Pendants', filter_brooches: 'Brooches', filter_bracelets: 'Bracelets',
+      from: 'from', empty: 'No pieces of this kind right now.',
+      p1_name: '"Bonita" signet ring', p1_prov: 'Spain, 1940s · hand-engraved',
+      p2_name: '"Amore" cartouche pendant', p2_prov: 'Italy, 1950s · rolled gold',
+      p3_name: '"Amore" signature ring', p3_prov: 'France, 1960s · oval signet',
+      p4_name: '"Eira" earrings', p4_prov: 'Spain, 1970s · long hook',
+      p5_name: '"Dafne" single earring', p5_prov: 'c. 1930 · old-cut diamond',
+      p6_name: '"Estrat" earrings', p6_prov: 'Barcelona workshop · oxidised silver',
+      p7_name: 'Cameo brooch', p7_prov: 'Germany, 19th c. · carved shell',
+      p8_name: 'Baroque pearl choker', p8_prov: '1950s · river pearl',
+      p9_name: 'Engraved bangle', p9_prov: 'Spain, 1940s · tongue clasp',
+      workshop_kicker: 'The workshop', workshop_headline: 'We restore without erasing.',
+      workshop_p1: 'We work with a Madrid workshop that specialises in antique jewellery: gold plating where needed, new clasps, re-strung pearls. Wear that means something stays.',
+      workshop_p2: 'Looking for something specific — an initialled signet, a mourning piece, a period engagement ring? We can track it down for you.',
+      workshop_cta: 'Write to us', workshop_caption: 'February selection · untouched',
+      opening_kicker: 'Coming soon', opening_headline: 'The workshop opens in Madrid',
+      opening_lead: 'We are setting up a shop-workshop inside a Madrid design centre. Address and date, very soon. Leave your email and be among the first through the door.',
+      email_label: 'Email address', email_ph: 'you@email.com', signup_btn: 'Notify me',
+      opening_fine: 'One email when we open. No newsletter, no forwarding.',
+      msg_ok: 'Thank you. We will write when we open.', msg_err: 'Please enter a valid email.',
+      footer_tag: 'Jewellery with a past life'
+    },
+    zh: {
+      skip: '跳到藏品',
+      topbar: '有前世的首饰 · 欧洲全境配送 · 马德里可自取',
+      menu: '菜单', nav_manifesto: '理念', nav_collection: '精选', nav_workshop: '工作室', nav_opening: '马德里开幕',
+      hero_eyebrow: '开幕系列 — 9 件', hero_l1: '每一件首饰', hero_l2: '在遇见你之前', hero_l3: '都有过一生。',
+      hero_lead: '二手首饰，一件一件挑选：有落款、有刻字、有恰到好处的磨痕。你选下它，就接着写它的故事。',
+      hero_cta1: '查看精选', hero_cta2: '开幕时通知我', scroll: '继续',
+      manifesto_kicker: '理念', manifesto_dropcap: '我',
+      manifesto_lead: '们不制作任何东西。我们寻找早已存在的首饰——在旧表盒里、在遗物里、在跳蚤市场里——只留下有性格的那些：磨损的印章戒面、一句刻字、来自另一个年代的扣环。',
+      manifesto_p2: '每件都附一张卡片：来自何处、属于哪个年代、我们做了什么让它复活。绝不打磨到抹去它的历史。',
+      collection_title: '精选', collection_count: '9 件', collection_note: '每周更新',
+      filter_all: '全部', filter_rings: '戒指', filter_earrings: '耳饰', filter_pendants: '吊坠', filter_brooches: '胸针', filter_bracelets: '手链',
+      from: '起', empty: '目前没有此类首饰。',
+      p1_name: '「Bonita」印章戒指', p1_prov: '西班牙，1940 年代 · 手工雕刻',
+      p2_name: '「Amore」卡图什吊坠', p2_prov: '意大利，1950 年代 · 包金',
+      p3_name: '「Amore」落款戒指', p3_prov: '法国，1960 年代 · 椭圆戒面',
+      p4_name: '「Eira」耳环', p4_prov: '西班牙，1970 年代 · 长耳钩',
+      p5_name: '「Dafne」单只耳饰', p5_prov: '约 1930 年 · 老式切工钻石',
+      p6_name: '「Estrat」耳环', p6_prov: '巴塞罗那工作室 · 氧化银',
+      p7_name: '浮雕贝壳胸针', p7_prov: '德国，19 世纪 · 手工雕贝',
+      p8_name: '巴洛克珍珠短项链', p8_prov: '1950 年代 · 河珠',
+      p9_name: '刻字手镯', p9_prov: '西班牙，1940 年代 · 舌扣',
+      workshop_kicker: '工作室', workshop_headline: '修复，但不抹去。',
+      workshop_p1: '我们与马德里一家专做古董首饰的工作室合作：需要时补镀金、换新扣环、重新串珠。有意义的磨痕会保留。',
+      workshop_p2: '想找特定的一件——带姓名首字母的印章戒、一件丧礼首饰、一枚年代订婚戒——我们可以替你寻找。',
+      workshop_cta: '联系我们', workshop_caption: '二月精选 · 未修饰',
+      opening_kicker: '即将开幕', opening_headline: '工作室将在马德里开幕',
+      opening_lead: '我们正在马德里一处设计中心筹备店铺兼工作室。地址与日期，很快公布。留下邮箱，第一批进门的人里有你。',
+      email_label: '电子邮箱', email_ph: 'you@email.com', signup_btn: '通知我',
+      opening_fine: '开幕时只发一封邮件。没有订阅推送，不转发。',
+      msg_ok: '谢谢。开幕时我们会写信给你。', msg_err: '请输入有效的邮箱地址。',
+      footer_tag: '有前世的首饰'
+    }
+  };
+  var STORE_KEY = 'relicario-lang';
+  var current = 'es';
+  function readStored() { try { return localStorage.getItem(STORE_KEY); } catch (e) { return null; } }
+  function writeStored(v) { try { localStorage.setItem(STORE_KEY, v); } catch (e) {} }
+  function applyLang(lang) {
+    var dict = I18N[lang]; if (!dict) return;
+    current = lang; document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n'); if (dict[k] != null) el.textContent = dict[k];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-ph'); if (dict[k] != null) el.setAttribute('placeholder', dict[k]);
+    });
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      var on = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('is-active', on);
+      if (on) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+    writeStored(lang);
+  }
+  function initLang() {
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); });
+    });
+    var stored = readStored();
+    var initial = stored || (navigator.language || 'es').slice(0, 2).toLowerCase();
+    if (!I18N[initial]) initial = 'es';
+    applyLang(initial);
+  }
+  function initMenu() {
+    var btn = document.querySelector('.menu-btn'); var nav = document.getElementById('site-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = nav.hasAttribute('hidden');
+      if (open) nav.removeAttribute('hidden'); else nav.setAttribute('hidden', '');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { nav.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); });
+    });
+  }
+  function initFilters() {
+    var chips = document.querySelectorAll('.chip');
+    var cards = document.querySelectorAll('#grid .card');
+    var empty = document.querySelector('.grid-empty');
+    if (!chips.length) return;
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        chips.forEach(function (c) { c.classList.toggle('is-active', c === chip); });
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = f === 'all' || card.getAttribute('data-category') === f;
+          card.hidden = !match; if (match) shown++;
+        });
+        if (empty) empty.hidden = shown !== 0;
+      });
+    });
+  }
+  function initForm() {
+    var form = document.getElementById('signup');
+    var input = document.getElementById('email');
+    var msg = document.getElementById('formMsg');
+    if (!form || !input || !msg) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+      msg.textContent = I18N[current][ok ? 'msg_ok' : 'msg_err'];
+      msg.classList.toggle('is-error', !ok);
+      if (ok) form.reset(); else input.focus();
+    });
+  }
+  function initReveal() {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var items = document.querySelectorAll('.card, .manifesto-body, .workshop-copy, .opening-inner');
+    items.forEach(function (el) {
+      el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .7s ease, transform .7s ease';
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.style.opacity = '1'; en.target.style.transform = 'none'; io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var y = document.getElementById('year'); if (y) y.textContent = String(new Date().getFullYear());
+    initLang(); initMenu(); initFilters(); initForm(); initReveal();
+  });
+})();
+</script>
+
+</body>
+</html>
