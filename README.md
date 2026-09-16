@@ -72,6 +72,12 @@ Copia un bloque `<li class="card" data-category="…">` completo en `index.html`
 `data-category` debe ser uno de: `anillos`, `pendientes`, `colgantes`, `broches`, `pulseras`
 (así funcionan los filtros). Actualiza el número "9 piezas" (`collection_count` en `main.js`).
 
+Cada tarjeta lleva también un botón `.add-bag` con `data-lot="10"` (siguiente
+número libre) y `data-price="123"` (precio en euros, solo el número) — son los
+que usa la bolsa. Y añade `p10_name` / `p10_prov` en los tres idiomas dentro
+de `I18N` en `main.js` (el nombre se reutiliza también en el correo de
+reserva).
+
 ### Colores y tipos
 Todo está arriba de `style.css`, en `:root` (variables `--bone`, `--ink`, `--brass`,
 `--oxblood`, etc.). Cambiar un valor ahí lo cambia en toda la página.
@@ -79,6 +85,26 @@ Todo está arriba de `style.css`, en `:root` (variables `--bone`, `--ink`, `--br
 ### Datos de la tienda física
 Cuando tengas dirección y fecha, edita la sección `#apertura` en `index.html`
 (claves `opening_*` en `main.js`) y el pie de página.
+
+### Bolsa / carrito
+Como cada pieza es única (no hay stock repetido), la "bolsa" no usa cantidades:
+solo deja marcar qué lotes te interesan y enviarlos como una reserva.
+
+- Botón "Añadir a la bolsa" en cada tarjeta (`.add-bag`, con `data-lot` y
+  `data-price`), icono con contador en la cabecera, y un panel lateral
+  (`#cartDrawer` en `index.html`) con la lista, el subtotal y el botón
+  "Solicitar reserva".
+- Todo vive en `assets/js/main.js` (funciones `initCartButtons`,
+  `initCartDrawer`, `renderCart`, etc.) y se guarda en `localStorage`
+  (`relicario-cart`), así que la bolsa sobrevive a recargar la página.
+- "Solicitar reserva" no envía nada por sí mismo (no hay backend): abre el
+  correo del visitante (`mailto:`) con el listado de lotes y el subtotal ya
+  escritos. **Cambia el correo de destino** en `main.js` (constante
+  `CART_MAIL`, ahora `hola@relicario.es`, un placeholder) por el correo real
+  de la tienda.
+- Si en el futuro quieres cobrar de verdad en vez de solo reservar, esto se
+  puede sustituir por Stripe Payment Links o Shopify Buy Button sin tocar el
+  resto del sitio (ver punto 6 más abajo).
 
 ### Formulario de correo
 Ahora el formulario solo valida y muestra un mensaje; **no envía nada**. Para

@@ -87,13 +87,22 @@
       <span data-i18n="menu">Menú</span>
     </button>
     <a class="wordmark" href="#top" aria-label="RELICARIO">RELICARIO</a>
-    <nav class="lang" aria-label="Idioma">
-      <button data-lang="es" class="is-active" lang="es">ES</button>
-      <span aria-hidden="true">·</span>
-      <button data-lang="en" lang="en">EN</button>
-      <span aria-hidden="true">·</span>
-      <button data-lang="zh" lang="zh">中</button>
-    </nav>
+    <div class="header-right">
+      <nav class="lang" aria-label="Idioma">
+        <button data-lang="es" class="is-active" lang="es">ES</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="en" lang="en">EN</button>
+        <span aria-hidden="true">·</span>
+        <button data-lang="zh" lang="zh">中</button>
+      </nav>
+      <button class="cart-btn" id="cartOpen" type="button" aria-haspopup="dialog" aria-controls="cartDrawer" data-i18n-aria="cart_open">
+        <svg class="cart-icon" viewBox="0 0 22 22" aria-hidden="true">
+          <path d="M5 7h12l-1 11.5H6L5 7Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M8 7V6a3 3 0 0 1 6 0v1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+        <span class="cart-count" id="cartCount" hidden>0</span>
+      </button>
+    </div>
   </div>
   <nav class="site-nav" id="site-nav" aria-label="Principal" hidden>
     <a href="#manifiesto" data-i18n="nav_manifesto">Manifiesto</a>
@@ -179,6 +188,7 @@
           <h3 class="card-name" data-i18n="p1_name">Anillo sello «Bonita»</h3>
           <p class="prov" data-i18n="p1_prov">España, años 40 · grabado a mano</p>
           <p class="price">€79</p>
+          <button class="add-bag" type="button" data-lot="1" data-price="79" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="colgantes">
           <figure class="card-media"><svg class="motif"><use href="#m-pendant"/></svg></figure>
@@ -186,6 +196,7 @@
           <h3 class="card-name" data-i18n="p2_name">Colgante cartucho «Amore»</h3>
           <p class="prov" data-i18n="p2_prov">Italia, años 50 · oro laminado</p>
           <p class="price"><span data-i18n="from">desde</span> €110</p>
+          <button class="add-bag" type="button" data-lot="2" data-price="110" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="anillos">
           <figure class="card-media"><svg class="motif"><use href="#m-ring"/></svg></figure>
@@ -193,6 +204,7 @@
           <h3 class="card-name" data-i18n="p3_name">Anillo firma «Amore»</h3>
           <p class="prov" data-i18n="p3_prov">Francia, años 60 · sello ovalado</p>
           <p class="price">€95</p>
+          <button class="add-bag" type="button" data-lot="3" data-price="95" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="pendientes">
           <figure class="card-media"><svg class="motif"><use href="#m-earrings"/></svg></figure>
@@ -200,6 +212,7 @@
           <h3 class="card-name" data-i18n="p4_name">Pendientes «Eira»</h3>
           <p class="prov" data-i18n="p4_prov">España, años 70 · gancho largo</p>
           <p class="price">€99</p>
+          <button class="add-bag" type="button" data-lot="4" data-price="99" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="pendientes">
           <figure class="card-media"><svg class="motif"><use href="#m-earring-1"/></svg></figure>
@@ -207,6 +220,7 @@
           <h3 class="card-name" data-i18n="p5_name">Pendiente individual «Dafne»</h3>
           <p class="prov" data-i18n="p5_prov">c. 1930 · diamante talla antigua</p>
           <p class="price">€290</p>
+          <button class="add-bag" type="button" data-lot="5" data-price="290" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="pendientes">
           <figure class="card-media"><svg class="motif"><use href="#m-earrings"/></svg></figure>
@@ -214,6 +228,7 @@
           <h3 class="card-name" data-i18n="p6_name">Pendientes «Estrat»</h3>
           <p class="prov" data-i18n="p6_prov">Taller de Barcelona · plata oxidada</p>
           <p class="price">€135</p>
+          <button class="add-bag" type="button" data-lot="6" data-price="135" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="broches">
           <figure class="card-media"><svg class="motif"><use href="#m-brooch"/></svg></figure>
@@ -221,6 +236,7 @@
           <h3 class="card-name" data-i18n="p7_name">Broche camafeo</h3>
           <p class="prov" data-i18n="p7_prov">Alemania, s. XIX · concha tallada</p>
           <p class="price">€120</p>
+          <button class="add-bag" type="button" data-lot="7" data-price="120" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="colgantes">
           <figure class="card-media"><svg class="motif"><use href="#m-necklace"/></svg></figure>
@@ -228,6 +244,7 @@
           <h3 class="card-name" data-i18n="p8_name">Gargantilla de perla barroca</h3>
           <p class="prov" data-i18n="p8_prov">Años 50 · perla de río</p>
           <p class="price">€140</p>
+          <button class="add-bag" type="button" data-lot="8" data-price="140" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
         <li class="card" data-category="pulseras">
           <figure class="card-media"><svg class="motif"><use href="#m-bracelet"/></svg></figure>
@@ -235,6 +252,7 @@
           <h3 class="card-name" data-i18n="p9_name">Pulsera esclava grabada</h3>
           <p class="prov" data-i18n="p9_prov">España, años 40 · cierre de lengüeta</p>
           <p class="price">€85</p>
+          <button class="add-bag" type="button" data-lot="9" data-price="85" aria-pressed="false" data-i18n="cart_add">Añadir a la bolsa</button>
         </li>
       </ul>
       <p class="grid-empty" hidden data-i18n="empty">No hay piezas de este tipo por ahora.</p>
@@ -303,6 +321,24 @@
     </div>
   </div>
 </footer>
+
+<div class="cart-backdrop" id="cartBackdrop" hidden></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
+  <div class="cart-drawer-head">
+    <h2 id="cartTitle" data-i18n="cart_title">Tu bolsa</h2>
+    <button class="cart-close" id="cartClose" type="button" data-i18n-aria="cart_close">&times;</button>
+  </div>
+  <ul class="cart-list" id="cartList"></ul>
+  <p class="cart-empty" id="cartEmpty" data-i18n="cart_empty">Tu bolsa está vacía. Añade alguna pieza de la selección.</p>
+  <div class="cart-foot" id="cartFoot" hidden>
+    <div class="cart-subtotal">
+      <span data-i18n="cart_subtotal">Subtotal</span>
+      <span id="cartSubtotal">€0</span>
+    </div>
+    <a class="btn btn-primary cart-reserve" id="cartReserve" href="#" data-i18n="cart_reserve_btn">Solicitar reserva</a>
+    <p class="cart-reserve-note" data-i18n="cart_reserve_note">Se abrirá tu correo con el listado. Como cada pieza es única, confirmamos disponibilidad en 24 h.</p>
+  </div>
+</aside>
 
 <script src="assets/js/main.js"></script>
 </body>

@@ -62,7 +62,20 @@
       opening_fine: 'Un solo correo cuando abramos. Sin newsletter, sin reenvíos.',
       msg_ok: 'Gracias. Te escribimos cuando abramos.',
       msg_err: 'Escribe un correo válido, por favor.',
-      footer_tag: 'Joyería con vida anterior'
+      footer_tag: 'Joyería con vida anterior',
+      cart_open: 'Abrir bolsa',
+      cart_close: 'Cerrar',
+      cart_title: 'Tu bolsa',
+      cart_empty: 'Tu bolsa está vacía. Añade alguna pieza de la selección.',
+      cart_add: 'Añadir a la bolsa',
+      cart_added: 'En tu bolsa',
+      cart_remove: 'Quitar',
+      cart_subtotal: 'Subtotal',
+      cart_reserve_btn: 'Solicitar reserva',
+      cart_reserve_note: 'Se abrirá tu correo con el listado. Como cada pieza es única, confirmamos disponibilidad en 24 h.',
+      cart_mail_subject: 'Reserva — RELICARIO',
+      cart_mail_intro: 'Hola, me gustaría reservar estas piezas:',
+      cart_mail_total: 'Subtotal'
     },
 
     en: {
@@ -120,7 +133,20 @@
       opening_fine: 'One email when we open. No newsletter, no forwarding.',
       msg_ok: 'Thank you. We will write when we open.',
       msg_err: 'Please enter a valid email.',
-      footer_tag: 'Jewellery with a past life'
+      footer_tag: 'Jewellery with a past life',
+      cart_open: 'Open bag',
+      cart_close: 'Close',
+      cart_title: 'Your bag',
+      cart_empty: 'Your bag is empty. Add a piece from the selection.',
+      cart_add: 'Add to bag',
+      cart_added: 'In your bag',
+      cart_remove: 'Remove',
+      cart_subtotal: 'Subtotal',
+      cart_reserve_btn: 'Request reservation',
+      cart_reserve_note: 'This opens your email with the list. As each piece is one-of-a-kind, we confirm availability within 24h.',
+      cart_mail_subject: 'Reservation — RELICARIO',
+      cart_mail_intro: 'Hello, I would like to reserve these pieces:',
+      cart_mail_total: 'Subtotal'
     },
 
     zh: {
@@ -178,7 +204,20 @@
       opening_fine: '开幕时只发一封邮件。没有订阅推送，不转发。',
       msg_ok: '谢谢。开幕时我们会写信给你。',
       msg_err: '请输入有效的邮箱地址。',
-      footer_tag: '有前世的首饰'
+      footer_tag: '有前世的首饰',
+      cart_open: '打开购物袋',
+      cart_close: '关闭',
+      cart_title: '你的购物袋',
+      cart_empty: '购物袋是空的，先去精选里挑一件吧。',
+      cart_add: '加入购物袋',
+      cart_added: '已加入',
+      cart_remove: '移除',
+      cart_subtotal: '小计',
+      cart_reserve_btn: '申请预留',
+      cart_reserve_note: '将打开你的邮箱，附上清单。由于每件都是孤品，我们会在 24 小时内确认是否有货。',
+      cart_mail_subject: '预留申请 — RELICARIO',
+      cart_mail_intro: '你好，我想预留以下几件：',
+      cart_mail_total: '小计'
     }
   };
 
@@ -206,6 +245,10 @@
       var key = el.getAttribute('data-i18n-ph');
       if (dict[key] != null) el.setAttribute('placeholder', dict[key]);
     });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (dict[key] != null) el.setAttribute('aria-label', dict[key]);
+    });
 
     document.querySelectorAll('.lang button').forEach(function (b) {
       var on = b.getAttribute('data-lang') === lang;
@@ -215,6 +258,7 @@
     });
 
     writeStored(lang);
+    renderCart();
   }
 
   function initLang() {
@@ -288,6 +332,178 @@
     });
   }
 
+  var CART_KEY = 'relicario-cart';
+  var CART_MAIL = 'hola@relicario.es';
+
+  function readCart() {
+    try {
+      var raw = localStorage.getItem(CART_KEY);
+      var parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) { return []; }
+  }
+  function writeCart() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) {}
+  }
+
+  var cart = readCart();
+
+  function padLot(lot) {
+    lot = String(lot);
+    return lot.length < 3 ? ('00' + lot).slice(-3) : lot;
+  }
+
+  function toggleCartItem(lot) {
+    var i = cart.indexOf(lot);
+    if (i === -1) cart.push(lot); else cart.splice(i, 1);
+    writeCart();
+    renderCart();
+  }
+
+  function removeCartItem(lot) {
+    var i = cart.indexOf(lot);
+    if (i === -1) return;
+    cart.splice(i, 1);
+    writeCart();
+    renderCart();
+  }
+
+  function updateReserveLink(total) {
+    var link = document.getElementById('cartReserve');
+    if (!link) return;
+    if (!cart.length) {
+      link.setAttribute('aria-disabled', 'true');
+      link.href = '#';
+      return;
+    }
+    link.removeAttribute('aria-disabled');
+    var dict = I18N[current];
+    var lines = cart.map(function (lot) {
+      var btn = document.querySelector('.add-bag[data-lot="' + lot + '"]');
+      var price = btn ? btn.getAttribute('data-price') : '';
+      var name = dict['p' + lot + '_name'] || '';
+      return '· Lote ' + padLot(lot) + ' — ' + name + ' (€' + price + ')';
+    });
+    var subject = encodeURIComponent(dict.cart_mail_subject);
+    var body = encodeURIComponent(
+      dict.cart_mail_intro + '\n\n' + lines.join('\n') +
+      '\n\n' + dict.cart_mail_total + ': €' + total
+    );
+    link.href = 'mailto:' + CART_MAIL + '?subject=' + subject + '&body=' + body;
+  }
+
+  function renderCart() {
+    var dict = I18N[current];
+
+    document.querySelectorAll('.add-bag').forEach(function (btn) {
+      var lot = btn.getAttribute('data-lot');
+      var added = cart.indexOf(lot) !== -1;
+      btn.classList.toggle('is-added', added);
+      btn.setAttribute('aria-pressed', String(added));
+      btn.textContent = dict[added ? 'cart_added' : 'cart_add'];
+    });
+
+    var countEl = document.getElementById('cartCount');
+    if (countEl) {
+      countEl.textContent = String(cart.length);
+      countEl.hidden = cart.length === 0;
+    }
+
+    var list = document.getElementById('cartList');
+    var empty = document.getElementById('cartEmpty');
+    var foot = document.getElementById('cartFoot');
+    if (!list) return;
+
+    list.innerHTML = '';
+    var total = 0;
+    cart.forEach(function (lot) {
+      var btn = document.querySelector('.add-bag[data-lot="' + lot + '"]');
+      if (!btn) return;
+      var card = btn.closest('.card');
+      var price = parseFloat(btn.getAttribute('data-price')) || 0;
+      total += price;
+      var name = dict['p' + lot + '_name'] || '';
+      var useEl = card ? card.querySelector('.motif use') : null;
+      var href = useEl ? useEl.getAttribute('href') : '';
+
+      var li = document.createElement('li');
+      li.className = 'cart-item';
+
+      var motif = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      motif.setAttribute('class', 'cart-item-motif');
+      var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', href);
+      motif.appendChild(use);
+
+      var info = document.createElement('span');
+      info.className = 'cart-item-info';
+      var nameEl = document.createElement('span');
+      nameEl.className = 'cart-item-name';
+      nameEl.textContent = name;
+      var priceEl = document.createElement('span');
+      priceEl.className = 'cart-item-price';
+      priceEl.textContent = '€' + price;
+      info.appendChild(nameEl);
+      info.appendChild(priceEl);
+
+      var removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'cart-item-remove';
+      removeBtn.setAttribute('data-lot', lot);
+      removeBtn.setAttribute('aria-label', dict.cart_remove);
+      removeBtn.textContent = '×';
+      removeBtn.addEventListener('click', function () { removeCartItem(lot); });
+
+      li.appendChild(motif);
+      li.appendChild(info);
+      li.appendChild(removeBtn);
+      list.appendChild(li);
+    });
+
+    if (empty) empty.hidden = cart.length !== 0;
+    if (foot) foot.hidden = cart.length === 0;
+
+    var subtotalEl = document.getElementById('cartSubtotal');
+    if (subtotalEl) subtotalEl.textContent = '€' + total;
+
+    updateReserveLink(total);
+  }
+
+  function initCartButtons() {
+    document.querySelectorAll('.add-bag').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        toggleCartItem(btn.getAttribute('data-lot'));
+      });
+    });
+  }
+
+  function initCartDrawer() {
+    var openBtn = document.getElementById('cartOpen');
+    var closeBtn = document.getElementById('cartClose');
+    var drawer = document.getElementById('cartDrawer');
+    var backdrop = document.getElementById('cartBackdrop');
+    if (!openBtn || !closeBtn || !drawer || !backdrop) return;
+
+    function onKey(e) { if (e.key === 'Escape') close(); }
+
+    function open() {
+      drawer.hidden = false;
+      backdrop.hidden = false;
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function close() {
+      drawer.hidden = true;
+      backdrop.hidden = true;
+      openBtn.focus();
+      document.removeEventListener('keydown', onKey);
+    }
+
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+  }
+
   function initReveal() {
     if (!('IntersectionObserver' in window)) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -312,6 +528,8 @@
   document.addEventListener('DOMContentLoaded', function () {
     var y = document.getElementById('year');
     if (y) y.textContent = String(new Date().getFullYear());
+    initCartButtons();
+    initCartDrawer();
     initLang();
     initMenu();
     initFilters();
